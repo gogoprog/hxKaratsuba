@@ -46,10 +46,6 @@ class Lib {
             var db = Std.string(Std.parseInt(ba) + Std.parseInt(bb));
             var e = multiply(da, db);
             var f = Std.string(Std.parseInt(e) - Std.parseInt(b) - Std.parseInt(c));
-            // trace("b=" + b);
-            // trace("c=" + c);
-            // trace("e=" + e);
-            // trace("f=" + f);
             {
                 var result = "";
                 var i = 0;
@@ -58,7 +54,6 @@ class Lib {
                 var z = powInt(c, 0);
                 var sum = x + y +z;
                 result  = Std.string(sum);
-                // trace(result);
                 return result;
             }
         }

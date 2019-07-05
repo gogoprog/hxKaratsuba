@@ -1,26 +1,23 @@
 class Main {
-    static function main() {
-#if sys
-        Sys.println("karatsuba!");
-        var args = Sys.args();
+    static private function test(a:Int, b:Int):Bool {
+        trace("Multiplying " + a + " by " + b);
+        var r1 = a * b;
+        var r2 = Std.parseInt(karatsuba.Lib.multiply(Std.string(a), Std.string(b)));
 
-        if(args.length < 2) {
-            Sys.println("Usage: karatsuba OPERAND OPERAND");
-        } else {
-            var a = args[0];
-            var b = args[1];
-            var r = karatsuba.Lib.multiply(a, b);
-            Sys.println(r);
+        if(r1 != r2) {
+            throw "Test failed! " + r2 + " instead of " + r1;
+            return false;
         }
-#else
-        var r = karatsuba.Lib.multiply("25", "63");
-        trace(r);
-        var a = "2531";
-        var b = "1467";
-        var r = karatsuba.Lib.multiply(a, b);
-        trace(r);
-        var r = karatsuba.Lib.multiply("31", "67");
-        trace(r);
-#end
+
+        return true;
+    }
+
+    static function main() {
+        test(31, 67);
+        test(2531, 1467);
+
+        for(i in 0...100) {
+            test(Std.random(10000), Std.random(10000));
+        }
     }
 }
