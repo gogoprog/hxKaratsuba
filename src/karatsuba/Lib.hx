@@ -33,13 +33,20 @@ class Lib {
                 b = '0' + b;
             }
 
-            var len = Std.int(Math.max(a.length, b.length));
-            var ha = Std.int(a.length / 2);
-            var hb = Std.int(b.length / 2);
-            var aa = a.substr(0, ha);
-            var ab = a.substr(ha);
-            var ba = b.substr(0, hb);
-            var bb = b.substr(hb);
+            while(a.length != b.length) {
+                if(a.length < b.length) {
+                    a = '0' + a;
+                } else {
+                    b = '0' + b;
+                }
+            }
+
+            var len = a.length;
+            var halfLen = Std.int(len / 2);
+            var aa = a.substr(0, halfLen);
+            var ab = a.substr(halfLen);
+            var ba = b.substr(0, halfLen);
+            var bb = b.substr(halfLen);
             var b = multiply(aa, ba);
             var c = multiply(ab, bb);
             var da = Std.string(Std.parseInt(aa) + Std.parseInt(ab));
@@ -50,9 +57,9 @@ class Lib {
                 var result = "";
                 var i = 0;
                 var x = powInt(b, len);
-                var y = powInt(f, ha);
+                var y = powInt(f, halfLen);
                 var z = powInt(c, 0);
-                var sum = x + y +z;
+                var sum = x + y + z;
                 result  = Std.string(sum);
                 return result;
             }

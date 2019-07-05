@@ -13,11 +13,12 @@ class Main {
     }
 
     static function main() {
-        test(31, 67);
-        test(2531, 1467);
+        var count = 100000;
 
-        for(i in 0...100) {
+        for(i in 0...count) {
             test(Std.random(10000), Std.random(10000));
         }
+
+        trace("All " + count + " tests passed!");
     }
 }
